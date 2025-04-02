@@ -1,11 +1,22 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
 ---
 
 <Layout>
-	<Welcome />
+	<Header />
+  <section class="min-h-screen flex flex-col md:flex-row items-center justify-between px-6 md:px-16 py-16 bg-gradient-to-br from-[#1b0e36] to-black">
+    <div class="max-w-xl space-y-6">
+      <h1 class="text-4xl md:text-5xl font-bold">
+        <span class="text-fuchsia-500">Escape Game</span><br />
+        <span class="text-white">CyberSécurité</span>
+      </h1>
+      <p class="text-sm text-gray-300">Sensibiliser les étudiants à la cybersécurité de manière ludique !</p>
+      <p class="text-sm text-gray-400">50% des étudiant déclarent avoir constaté une augmentation significative des attaques.</p>
+      <button class="px-6 py-2 rounded-full border border-fuchsia-500 hover:bg-fuchsia-600 transition">DÉCOUVRIR</button>
+    </div>
+    <div class="mt-12 md:mt-0">
+      <img src="/globe.png" alt="Globe" class="w-80 md:w-[450px]" />
+    </div>
+  </section>
 </Layout>
