@@ -3,20 +3,26 @@
 
 Éléménts à renseigner pour la soutenance :
 
-- [ ] Nom du projet :
-- [ ] URL de la landing page :
+- [ ] Nom du projet : Hacksterix
+- [ ] URL de la landing page : 
 - [ ] URL de l'application finale :
 - [ ] URL de connexion au back office :
 - [ ] Identifiant de connexion au backoffice :
 - [ ] Mot de passe de connexion au backoffice :
-- [ ] URL de la maquette FIGMA :
-- [ ] Description du projet :
+- [ ] URL de la maquette FIGMA : https://www.figma.com/design/dq8BXNsAikK9lMofdop1fl/Projet-S2?node-id=361-17&t=lCtxIoNjWkvt3hqc-1
+- [ ] Description du projet : Hacksterix est un site web ludique et pédagogique destiné à sensibiliser les étudiants et le 
+                            personnel de l’université aux enjeux de la cybersécurité. L’objectif est de rendre l’apprentissage des 
+                            bonnes pratiques à la fois amusant et interactif, grâce à des mini-jeux, des quiz, des missions et un 
+                            système de récompenses (badges, classements). Ce projet vise à transformer la cybersécurité en 
+                            une expérience engageante, tout en renforçant la protection des données personnelles et 
+                            institutionnelles.
+
 
 ## 🚀 Équipe
 
 | Étudiants    | Prénom NOM  |
 | :----------- | :---------- |
-| Étudiant 1   | à compléter |
-| Étudiant 2   | à compléter |
-| Étudiant 3   | à compléter |
+| Étudiant 1   | Adrien CHOULET |
+| Étudiant 2   | Banjamin BOBEL |
+| Étudiant 3   | Noah BARRET |
 | (Étudiant 4) | à compléter |
