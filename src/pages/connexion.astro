@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hacksterix - Connexion</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script type="module">
+      import PocketBase from 'https://cdn.jsdelivr.net/npm/pocketbase@0.18.4/+esm';
+
+      const pb = new PocketBase('https://hacksterix.adrienchoulet.fr/_/');
+
+      window.addEventListener('DOMContentLoaded', () => {
+        const form = document.querySelector('form');
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+
+          const email = document.querySelector('#email').value;
+          const password = document.querySelector('#password').value;
+
+          try {
+            const authData = await pb.collection('utilisateurs').authWithPassword(email, password);
+            alert('Connexion réussie !');
+            // Redirection possible : window.location.href = '/dashboard';
+          } catch (err) {
+            alert('Erreur de connexion : ' + err.message);
+          }
+        });
+        if (pb.authStore.isValid) {
+  console.log('Utilisateur connecté :', pb.authStore.model);
+}
+      });
+
+    </script>
+    <style>
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-image: url('/test.png');
+        background-size: cover;
+        background-position: center;
+        opacity: 0.45;
+        z-index: -1;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen flex items-center justify-center font-sans relative">
+    <div class="w-full max-w-md text-white px-8 py-10 rounded-lg z-10">
+      <div class="text-center mb-6">
+        <h1 class="text-3xl font-bold">Bienvenue Sur Hacksterix!</h1>
+        <p class="text-sm text-gray-300 mt-1">Nous somme content de vous revoir, connecter vous pour accéder à votre compte</p>
+      </div>
+      <form class="space-y-4">
+        <div>
+          <label for="email" class="text-xs font-light text-gray-400">Username or Email</label>
+          <input type="email" id="email" placeholder="muffinworks@gmail.com" class="mt-1 w-full px-4 py-2 bg-gray-900 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" />
+        </div>
+        <div>
+          <label for="password" class="text-xs font-light text-gray-400">Password</label>
+          <div class="relative">
+            <input type="password" id="password" placeholder="Password" class="mt-1 w-full px-4 py-2 bg-gray-900 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 pr-10" />
+            <span class="absolute inset-y-0 right-3 flex items-center text-gray-500 cursor-pointer">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-5.523 0-10-4.477-10-10S6.477-1 12-1s10 4.477 10 10c0 1.227-.218 2.404-.625 3.5" />
+              </svg>
+            </span>
+          </div>
+        </div>
+        <div class="flex items-center justify-between text-xs text-gray-400">
+          <label class="flex items-center space-x-2">
+            <input type="checkbox" class="form-checkbox text-purple-600" checked />
+            <span>Se souvenir</span>
+          </label>
+          <a href="#" class="hover:underline">Mot de passe oublier ?</a>
+        </div>
+        <button type="submit" class="w-full bg-gradient-to-r from-purple-600 to-purple-500 py-2 rounded-md font-semibold text-white hover:opacity-90">Connecter</button>
+      </form>
+
+      <div class="flex items-center my-6">
+        <hr class="flex-grow border-gray-700" />
+        <span class="mx-2 text-xs text-gray-500">or</span>
+        <hr class="flex-grow border-gray-700" />
+      </div>
+
+      <div class="flex justify-center space-x-4">
+        <button class="w-10 h-10 bg-transparent border border-gray-700 rounded-md flex items-center justify-center hover:bg-gray-800">
+          <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" class="w-5 h-5" />
+        </button>
+        <button class="w-10 h-10 bg-transparent border border-gray-700 rounded-md flex items-center justify-center hover:bg-gray-800">
+          <img src="https://www.svgrepo.com/show/475647/facebook-color.svg" alt="Facebook" class="w-5 h-5" />
+        </button>
+        <button class="w-10 h-10 bg-transparent border border-gray-700 rounded-md flex items-center justify-center hover:bg-gray-800">
+          <img src="https://www.svgrepo.com/show/475698/apple-color.svg" alt="Apple" class="w-5 h-5" />
+        </button>
+      </div>
+    </div>
+
+    <div class="absolute bottom-4 left-6 text-xs text-gray-400">
+      Pas encore de compte ? <a href="#" class="underline">S’inscrire</a>
+    </div>
+    <div class="absolute bottom-4 right-6 text-xs text-gray-400">
+      <a href="#" class="hover:underline">Contactez le Support</a>
+    </div>
+  </body>
+</html>
