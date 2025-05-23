@@ -1,0 +1,54 @@
+<section class="py-36 bg-black flex justify-center items-center" id="equipe">
+  <div class="w-full max-w-5xl px-6">
+    <div class="relative overflow-hidden rounded-2xl bg-gradient-to-r from-fuchsia-600 to-blue-500 text-white shadow-2xl">
+
+      <!-- Slides -->
+      <div id="carouselSlides" class="flex w-[300%] transition-transform duration-500 ease-in-out">
+        <!-- Slide 1 -->
+        <div class="w-full flex-shrink-0 flex flex-col md:flex-row items-center gap-8 p-12">
+          <img src="/banj.webp" alt="Benjamin" class="w-32 h-32" />
+          <div class="text-center md:text-left space-y-3">
+            <p class="text-base">J’ai été investi d’une grande mission, coder avec passion .</p>
+            <h3 class="text-xl font-bold">Benjamin Bobel</h3>
+            <p class="text-sm text-gray-200">Designer</p>
+          </div>
+        </div>
+        
+
+        <!-- Slide 2 -->
+        <div class="w-full flex-shrink-0 flex flex-col md:flex-row items-center gap-8 p-12">
+          <img src="/noah.png" alt="Julie" class="w-32 h-32" />
+          <div class="text-center md:text-left space-y-3">
+            <p class="text-base">Créer des interfaces modernes, accessibles et sécurisées pour tous.</p>
+            <h3 class="text-xl font-bold">Noah Barret</h3>
+            <p class="text-sm text-gray-200">Communicant</p>
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="w-full flex-shrink-0 flex flex-col md:flex-row items-center gap-8 p-12">
+          <img src="/adrien.png" alt="Hugo" class="w-32 h-32" />
+          <div class="text-center md:text-left space-y-3">
+            <p class="text-base">Comprendre les utilisateurs pour mieux les protéger face aux cybermenaces actuelles.</p>
+            <h3 class="text-xl font-bold">Adrien Choulet</h3>
+            <p class="text-sm text-gray-200">Développeur</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Arrows -->
+      <button id="prevBtn" class="absolute left-4 top-1/2 -translate-y-1/2 text-white text-4xl z-10 hover:scale-110 transition">&#10094;</button>
+      <button id="nextBtn" class="absolute right-4 top-1/2 -translate-y-1/2 text-white text-4xl z-10 hover:scale-110 transition">&#10095;</button>
+
+      <!-- Dots -->
+      <div class="absolute bottom-6 w-full flex justify-center gap-3">
+        <span class="dot w-3 h-3 bg-white/40 rounded-full cursor-pointer" data-index="0"></span>
+        <span class="dot w-3 h-3 bg-white/40 rounded-full cursor-pointer" data-index="1"></span>
+        <span class="dot w-3 h-3 bg-white/40 rounded-full cursor-pointer" data-index="2"></span>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/js/carousel.js"></script>
+</section>
+
