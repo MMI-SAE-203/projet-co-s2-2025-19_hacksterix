@@ -5,33 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hacksterix - Connexion</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <script type="module">
-      import PocketBase from 'https://cdn.jsdelivr.net/npm/pocketbase@0.18.4/+esm';
-
-      const pb = new PocketBase('https://hacksterix.adrienchoulet.fr/_/');
-
-      window.addEventListener('DOMContentLoaded', () => {
-        const form = document.querySelector('form');
-        form.addEventListener('submit', async (e) => {
-          e.preventDefault();
-
-          const email = document.querySelector('#email').value;
-          const password = document.querySelector('#password').value;
-
-          try {
-            const authData = await pb.collection('utilisateurs').authWithPassword(email, password);
-            alert('Connexion réussie !');
-            // Redirection possible : window.location.href = '/dashboard';
-          } catch (err) {
-            alert('Erreur de connexion : ' + err.message);
-          }
-        });
-        if (pb.authStore.isValid) {
-  console.log('Utilisateur connecté :', pb.authStore.model);
-}
-      });
-
-    </script>
     <style>
       body::before {
         content: "";
@@ -40,20 +13,23 @@
         left: 0;
         width: 100vw;
         height: 100vh;
-        background-image: url('/test.png');
+        background-image: url('/oreole.png');
         background-size: cover;
         background-position: center;
-        opacity: 0.45;
+        opacity: 1;
         z-index: -1;
       }
     </style>
   </head>
-  <body class="min-h-screen flex items-center justify-center font-sans relative">
+  <body class="min-h-screen flex items-center justify-center font-sans relative bg-black">
     <div class="w-full max-w-md text-white px-8 py-10 rounded-lg z-10">
       <div class="text-center mb-6">
         <h1 class="text-3xl font-bold">Bienvenue Sur Hacksterix!</h1>
         <p class="text-sm text-gray-300 mt-1">Nous somme content de vous revoir, connecter vous pour accéder à votre compte</p>
       </div>
+
+      <div id="welcome-message" class="hidden text-center text-lg font-semibold text-green-400 mb-4"></div>
+
       <form class="space-y-4">
         <div>
           <label for="email" class="text-xs font-light text-gray-400">Username or Email</label>
@@ -105,5 +81,43 @@
     <div class="absolute bottom-4 right-6 text-xs text-gray-400">
       <a href="#" class="hover:underline">Contactez le Support</a>
     </div>
+
+    <script type="module">
+  import PocketBase from '/lib/pocketbase.mjs';
+
+  const pb = new PocketBase('https://hacksterix.adrienchoulet.fr');
+
+  window.addEventListener('DOMContentLoaded', () => {
+    const form = document.querySelector('form');
+    const welcomeMessage = document.querySelector('#welcome-message');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const email = document.querySelector('#email').value;
+      const password = document.querySelector('#password').value;
+
+      try {
+        const authData = await pb.collection('utilisateurs').authWithPassword(email, password);
+        const user = pb.authStore.model;
+
+        // ✅ Enregistre le token dans un cookie accessible côté serveur
+        document.cookie = `pb_auth=${pb.authStore.token}; path=/; SameSite=Lax`;
+
+        form.classList.add('hidden');
+        welcomeMessage.classList.remove('hidden');
+        welcomeMessage.innerText = `Bienvenue, ${user.prenom} ${user.nom} !`;
+
+        // ✅ Redirection vers la page site ou profil
+        setTimeout(() => {
+          window.location.href = "/site"; // ou "/profil" selon ce que tu préfères
+        }, 1000);
+      } catch (err) {
+        alert('Erreur de connexion : ' + err.message);
+      }
+    });
+  });
+</script>
+
   </body>
 </html>
