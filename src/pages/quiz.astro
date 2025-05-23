@@ -1,0 +1,114 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PocketBase from '../../public/lib/pocketbase.mjs'; // <-- Chemin relatif correct
+import Header from "../components/Headersite.astro";
+import Footer from "../components/Footer.astro";
+import Carousel from "../components/Carousel.astro";
+
+---
+
+<Layout>
+  <Header />
+<section class="text-white px-6 pt-32 pb-20 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+  <!-- Colonne Gauche -->
+  <div class="space-y-6">
+    <h1 class="text-4xl md:text-5xl font-extrabold leading-tight text-left max-w-4xl">
+      Protégez-vous des menaces<br />de cybersécurité !
+    </h1>
+
+    <img
+      src="/102.png"
+      alt="Cyber sécurité"
+      class="rounded-lg w-full h-auto shadow-lg"
+    />
+
+    <h2 class="text-xl font-semibold">Protéger vous contre les cyberattaques ✅</h2>
+    <div class="flex items-center text-sm text-gray-400 gap-4 mb-4">
+      <span>👍 145</span>
+      <span>👎 6</span>
+    </div>
+
+    <p class="text-gray-300">
+      L'un des moyens les plus efficaces de se protéger contre les cyberattaques et tous les types de violations de données est de former vos employés à la prévention des cyberattaques et à l'utilisation des technologies de l'information et de la communication.
+    </p>
+    <p class="text-gray-300">
+      Le quiz est composé de questions. Pour réussir les quiz, il est important de se familiariser avec le sujet en prêtant attention à la courte vidéo.
+
+Pour commencer, cliquez sur le bouton « Démarrer ». Lorsque vous avez terminé, cliquez sur le bouton « Soumettre ».
+    </p>
+  </div>
+
+ <div class="bg-neutral-900 p-6 rounded-xl shadow-lg text-sm space-y-4 self-start w-full mt-44">
+  <div class="flex justify-between border-b border-gray-700 pb-2">
+    <span class="text-gray-400">Date :</span>
+    <span class="text-white font-medium">15/03/2025</span>
+  </div>
+  <div class="flex justify-between border-b border-gray-700 pb-2">
+    <span class="text-gray-400">Temps :</span>
+    <span class="text-white font-medium">15 Min</span>
+  </div>
+  <div class="flex justify-between border-b border-gray-700 pb-2">
+    <span class="text-gray-400">Tentatives :</span>
+    <span class="text-white font-medium">2</span>
+  </div>
+  <div class="flex justify-between border-b border-gray-700 pb-2">
+    <span class="text-gray-400">Points :</span>
+    <span class="text-white font-medium">80 Points</span>
+  </div>
+
+  <div class="pt-4">
+    <a href="/quiz/commencer" class="inline-block w-full text-center bg-fuchsia-600 hover:bg-fuchsia-700 text-white font-semibold py-2 rounded transition">
+      Commencer
+    </a>
+  </div>
+</div>
+
+</section>
+
+
+<section class="px-6 py-16 max-w-6xl mx-auto text-white flex flex-col md:flex-row items-center justify-center gap-20">
+  <!-- Réalisations -->
+  <div class="flex flex-col items-center">
+    <div class="flex items-center justify-between w-full mb-4">
+      <h3 class="text-lg font-semibold">Réalisations</h3>
+      <a href="#" class="text-sm text-gray-400 hover:text-fuchsia-400">Voir tout</a>
+    </div>
+    <div class="flex items-center gap-8">
+      <!-- Médailles -->
+      <div class="text-center">
+        <img src="/Badge1.png" alt="Retour" class="w-12 h-12 mx-auto" />
+        <p class="mt-2 text-sm">Retour</p>
+      </div>
+      <div class="text-center">
+        <img src="/Badge2.png" alt="Gagnant" class="w-12 h-12 mx-auto" />
+        <p class="mt-2 text-sm">Gagnant</p>
+      </div>
+      <div class="text-center">
+        <img src="/Badge3.png" alt="Chanceux" class="w-12 h-12 mx-auto" />
+        <p class="mt-2 text-sm">Chanceux</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Utilisateurs en ligne -->
+  <div class="flex flex-col items-center">
+    <h3 class="text-lg font-semibold mb-4">Autres utilisateurs en ligne</h3>
+    <div class="grid grid-cols-3 gap-4">
+      <!-- Avatars -->
+      <img src="/avatar1.png" alt="User 1" class="w-12 h-12 rounded-full" />
+      <img src="/avatar2.png" alt="User 2" class="w-12 h-12 rounded-full" />
+      <img src="/avatar3.png" alt="User 3" class="w-12 h-12 rounded-full" />
+      <img src="/avatar4.png" alt="User 4" class="w-12 h-12 rounded-full" />
+      <img src="/avatar5.png" alt="User 5" class="w-12 h-12 rounded-full" />
+      <div class="w-12 h-12 rounded-full bg-neutral-800 flex items-center justify-center text-sm font-semibold">
+        20+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+    <Footer />
+</Layout>
