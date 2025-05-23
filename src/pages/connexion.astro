@@ -83,6 +83,7 @@
     </div>
 
     <script type="module">
+
   import PocketBase from '/lib/pocketbase.mjs';
 
   const pb = new PocketBase('https://hacksterix.adrienchoulet.fr');
@@ -101,14 +102,14 @@
         const authData = await pb.collection('utilisateurs').authWithPassword(email, password);
         const user = pb.authStore.model;
 
-        // ✅ Enregistre le token dans un cookie accessible côté serveur
+       
         document.cookie = `pb_auth=${pb.authStore.token}; path=/; SameSite=Lax`;
 
         form.classList.add('hidden');
         welcomeMessage.classList.remove('hidden');
         welcomeMessage.innerText = `Bienvenue, ${user.prenom} ${user.nom} !`;
 
-        // ✅ Redirection vers la page site ou profil
+       
         setTimeout(() => {
           window.location.href = "/site"; // ou "/profil" selon ce que tu préfères
         }, 1000);
@@ -119,5 +120,35 @@
   });
 </script>
 
+=======
+      import PocketBase from '/lib/pocketbase.mjs';
+
+      const pb = new PocketBase('https://hacksterix.adrienchoulet.fr');  
+
+
+      window.addEventListener('DOMContentLoaded', () => {
+        const form = document.querySelector('form');
+        const welcomeMessage = document.querySelector('#welcome-message');
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+
+          const email = document.querySelector('#email').value;
+          const password = document.querySelector('#password').value;
+
+          console.log('Tentative de connexion avec', email);
+
+          try {
+            const authData = await pb.collection('utilisateurs').authWithPassword(email, password);
+            const user = pb.authStore.model;
+            form.classList.add('hidden');
+            welcomeMessage.classList.remove('hidden');
+            welcomeMessage.innerText = `Bienvenue, ${user.prenom} ${user.nom} !`;
+          } catch (err) {
+            alert('Erreur de connexion : ' + err.message);
+          }
+        });
+      });
+    </script>
+>>>>>>> c7f581b936600e06c8e138c6e0d252cce98d72c3
   </body>
 </html>
