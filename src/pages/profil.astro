@@ -1,0 +1,41 @@
+---
+
+
+import PocketBase from '../../public/lib/pocketbase.mjs'; // <-- Chemin relatif correct
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Headersite.astro";
+import Footer from "../components/Footer.astro";
+import Carousel from "../components/Carousel.astro";
+
+
+
+---
+
+<Layout>
+  <Header />
+  
+  <section class="px-6 py-20 max-w-4xl mx-auto text-white flex flex-col md:flex-row items-center gap-6">
+    <!-- Photo de profil -->
+    <img
+      src="https://ui-avatars.com/api/?name={record.prenom}+{record.nom}&background=random"
+      alt="Avatar"
+      class="w-24 h-24 rounded-full border-4 border-white object-cover"
+    />
+
+    <!-- Infos utilisateur -->
+    <div class="space-y-2">
+      <div class="flex items-center gap-2">
+    
+        <button class="text-sm bg-white text-black rounded-full p-2 hover:bg-gray-200">
+          ✏️
+        </button>
+      </div>
+      <div class="bg-white text-black inline-block px-4 py-1 rounded-full text-sm">
+        Vicq, France
+      </div>
+    </div>
+  </section>
+  
+  
+  <Footer />
+</Layout>
