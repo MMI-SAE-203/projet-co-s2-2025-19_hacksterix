@@ -8,17 +8,11 @@ import Footer from "../../components/Footer.astro";
 <Layout>
   <Header />
 
-  <script is:inline>
-    const script = document.createElement('script');
-    script.src = "https://backend.plug-and-quiz.com/api/embed/embed.js";
-    script.defer = true;
-    script.setAttribute("data-domainId", "5d9492fc-f10e-4556-9a99-4ad309909567");
-    script.setAttribute("data-position", "bottom-right");
-    document.body.appendChild(script);
+  <script src="https://backend.plug-and-quiz.com/api/embed/embed.js"
+          defer
+          data-domainId="5d9492fc-f10e-4556-9a99-4ad309909567"
+          data-position="bottom-right">
   </script>
-
-
-
 
   <Footer />
 </Layout>
