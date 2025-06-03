@@ -3,9 +3,29 @@ import "../styles.css";
 ---
 
 <html lang="fr">
+  <script defer src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
+<script is:inline>
+  window.addEventListener("load", function(){
+    window.cookieconsent.initialise({
+      palette: {
+        popup: { background: "#000" },
+        button: { background: "#f1d600" }
+      },
+      theme: "classic",
+      content: {
+        message: "Ce site utilise des cookies pour afficher le quiz.",
+        dismiss: "OK",
+        link: "En savoir plus"
+      }
+    });
+  });
+</script>
+
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="no-referrer-when-downgrade">
     <title>Hackstérix</title>
   </head>
   <body class="bg-black text-white font-sans">
