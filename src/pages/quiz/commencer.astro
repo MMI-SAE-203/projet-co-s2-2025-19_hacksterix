@@ -1,14 +1,14 @@
 ---
-import PocketBase from '../../public/lib/pocketbase.mjs';
-import Layout from "../layouts/Layout.astro";
-import Header from "../components/Headersite.astro";
-import Footer from "../components/Footer.astro";
+import PocketBase from '../../../public/lib/pocketbase.mjs';
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Headersite.astro";
+import Footer from "../../components/Footer.astro";
 ---
 
 <Layout>
   <Header />
-
-  <div slot="afterFooter">
+<body>
+  <div>
     <script 
       src="https://backend.plug-and-quiz.com/api/embed/embed.js"
       data-domainId="5d9492fc-f10e-4556-9a99-4ad309909567"
@@ -16,6 +16,8 @@ import Footer from "../components/Footer.astro";
       defer>
     </script>
   </div>
+</body>
+  
 
   <Footer />
 
