@@ -6,7 +6,6 @@ import Layout from "../../layouts/Layout.astro";
 import Header from "../../components/Headersite.astro";
 import Footer from "../../components/Footer.astro";
 
-// Connexion PocketBase
 const pb = new PocketBase('https://hacksterix.adrienchoulet.fr');
 const questions = await pb.collection('quiz').getFullList({
   sort: '+created',
@@ -23,6 +22,7 @@ const rest = questions.slice(1);
   <section class="text-white px-6 py-20 max-w-3xl mx-auto space-y-10">
     <h1 class="text-3xl font-bold text-center">Défi cybersécurité</h1>
 
+  
     <div id="quiz-container" class="space-y-6">
       <h2 class="text-xl font-semibold">{first.questions}</h2>
       <form id="quiz-form" class="space-y-2">
@@ -50,76 +50,72 @@ const rest = questions.slice(1);
 
   <Footer />
 
-  <!-- 🔐 Injecte le reste des questions -->
+  <!--  Injecte les autres questions (sérialisées) -->
   <script id="quiz-data" type="application/json" is:inline>
     {JSON.stringify(rest)}
   </script>
 
-  <!-- Script JS -->
+  <!--  JS pour gérer les questions suivantes -->
   <script type="module">
-    window.addEventListener('DOMContentLoaded', () => {
-      const restQuestions = JSON.parse(document.getElementById("quiz-data").textContent);
+    const restQuestions = JSON.parse(document.getElementById("quiz-data").textContent);
+    let currentIndex = 0;
+    let score = 0;
+
+    // Vérifie la 1ère réponse
+    document.getElementById("quiz-form").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const selected = document.querySelector("input[name='answer']:checked");
+      if (!selected) return alert("Choisis une réponse !");
+      
+      // 💡 1re question hardcodée pour comparaison
+      if (["reponse_1", "reponse_2"].includes(selected.value)) score++;
+
+      renderNext();
+    });
+
+    function renderNext() {
+      if (currentIndex >= restQuestions.length) {
+        showResults();
+        return;
+      }
+
+      const q = restQuestions[currentIndex];
       const container = document.getElementById("quiz-container");
+      container.innerHTML = `
+        <div class="space-y-4">
+          <h2 class="text-xl font-semibold">${q.questions}</h2>
+          <form id="quiz-form" class="space-y-2">
+            ${[1, 2, 3, 4].map(i => `
+              <label class="block bg-neutral-800 px-4 py-2 rounded cursor-pointer hover:bg-fuchsia-700">
+                <input type="radio" name="answer" value="reponse_${i}" class="mr-2" />
+                ${q['reponse_' + i]}
+              </label>
+            `).join('')}
+            <button type="submit" class="mt-4 bg-fuchsia-600 hover:bg-fuchsia-700 px-4 py-2 rounded">Suivant</button>
+          </form>
+        </div>
+      `;
 
-      let currentIndex = 0;
-      let score = 0;
-
-      // 1ère soumission
       document.getElementById("quiz-form").addEventListener("submit", (e) => {
         e.preventDefault();
         const selected = document.querySelector("input[name='answer']:checked");
         if (!selected) return alert("Choisis une réponse !");
-        if (["reponse_1", "reponse_2"].includes(selected.value)) score++;
+        if (Array.isArray(q.bonne_reponse) && q.bonne_reponse.includes(selected.value)) score++;
 
+        currentIndex++;
         renderNext();
       });
+    }
 
-      function renderNext() {
-        if (currentIndex >= restQuestions.length) {
-          showResults();
-          return;
-        }
-
-        const q = restQuestions[currentIndex];
-        container.innerHTML = `
-          <div class="space-y-4">
-            <h2 class="text-xl font-semibold">${q.questions}</h2>
-            <form id="quiz-form" class="space-y-2">
-              ${[1, 2, 3, 4].map(i => `
-                <label class="block bg-neutral-800 px-4 py-2 rounded cursor-pointer hover:bg-fuchsia-700">
-                  <input type="radio" name="answer" value="reponse_${i}" class="mr-2" />
-                  ${q['reponse_' + i]}
-                </label>
-              `).join('')}
-              <button type="submit" class="mt-4 bg-fuchsia-600 hover:bg-fuchsia-700 px-4 py-2 rounded">Suivant</button>
-            </form>
-          </div>
-        `;
-
-        document.querySelector("#quiz-form").addEventListener("submit", (e) => {
-          e.preventDefault();
-          const selected = document.querySelector("input[name='answer']:checked");
-          if (!selected) return alert("Choisis une réponse !");
-          if (Array.isArray(q.bonne_reponse) && q.bonne_reponse.includes(selected.value)) score++;
-
-          currentIndex++;
-          renderNext();
-        });
-      }
-
-      function showResults() {
-        container.innerHTML = `
-          <div class="text-center space-y-4">
-            <h2 class="text-2xl font-bold text-green-400">🎉 Félicitations !</h2>
-            <p>Tu as obtenu <strong>${score}</strong> / ${restQuestions.length + 1} bonnes réponses.</p>
-            <img src="/Badge${score >= 4 ? 2 : 1}.png" alt="Badge" class="w-24 mx-auto" />
-          </div>
-        `;
-      }
-    });
+    function showResults() {
+      const container = document.getElementById("quiz-container");
+      container.innerHTML = `
+        <div class="text-center space-y-4">
+          <h2 class="text-2xl font-bold text-green-400">🎉 Félicitations !</h2>
+          <p>Tu as obtenu <strong>${score}</strong> / ${restQuestions.length + 1} bonnes réponses.</p>
+          <img src="/Badge${score >= 4 ? 2 : 1}.png" alt="Badge" class="w-24 mx-auto" />
+        </div>
+      `;
+    }
   </script>
 </Layout>
-
-
-
-
