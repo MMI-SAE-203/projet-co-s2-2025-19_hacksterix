@@ -3,33 +3,47 @@ import "../styles.css";
 ---
 
 <html lang="fr">
-  <script defer src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
-<script is:inline>
-  window.addEventListener("load", function(){
-    window.cookieconsent.initialise({
-      palette: {
-        popup: { background: "#000" },
-        button: { background: "#f1d600" }
-      },
-      theme: "classic",
-      content: {
-        message: "Ce site utilise des cookies pour afficher le quiz.",
-        dismiss: "OK",
-        link: "En savoir plus"
-      }
-    });
-  });
-</script>
-
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="referrer" content="no-referrer-when-downgrade">
+    <meta name="referrer" content="no-referrer-when-downgrade" />
     <title>Hackstérix</title>
   </head>
+
   <body class="bg-black text-white font-sans">
     <slot />
-    <slot name="afterFooter" />
+
+    <!-- 🍪 Bandeau de consentement + script Plug and Quiz -->
+    <div id="cookie-banner" style="position:fixed;bottom:20px;left:20px;background:#222;color:white;padding:1rem;border-radius:8px;z-index:10000">
+      Ce site utilise des cookies pour afficher le quiz.
+      <button onclick="acceptCookies()" style="margin-left:1rem;background:#f1d600;border:none;padding:0.5rem 1rem;cursor:pointer">OK</button>
+    </div>
+
+    <script is:inline>
+      function acceptCookies() {
+        localStorage.setItem("cookiesAccepted", "true");
+        document.getElementById("cookie-banner").remove();
+
+        const script = document.createElement("script");
+        script.src = "https://backend.plug-and-quiz.com/api/embed/embed.js";
+        script.defer = true;
+        script.setAttribute("data-domainId", "5d9492fc-f10e-4556-9a99-4ad309909567");
+        script.setAttribute("data-position", "bottom-right");
+        document.body.appendChild(script);
+      }
+
+      // Si l'utilisateur a déjà accepté
+      if (localStorage.getItem("cookiesAccepted") === "true") {
+        const script = document.createElement("script");
+        script.src = "https://backend.plug-and-quiz.com/api/embed/embed.js";
+        script.defer = true;
+        script.setAttribute("data-domainId", "5d9492fc-f10e-4556-9a99-4ad309909567");
+        script.setAttribute("data-position", "bottom-right");
+        document.body.appendChild(script);
+
+        const banner = document.getElementById("cookie-banner");
+        if (banner) banner.remove();
+      }
+    </script>
   </body>
 </html>
