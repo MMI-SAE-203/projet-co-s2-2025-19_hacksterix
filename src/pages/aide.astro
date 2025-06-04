@@ -1,0 +1,94 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Headersite.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout>
+  <Header />
+
+  <main class="px-6 pt-32 pb-24 max-w-5xl mx-auto text-white space-y-20">
+    <!-- Titre -->
+    <section class="space-y-6">
+      <h1 class="text-4xl md:text-5xl font-extrabold text-fuchsia-600">Centre d’aide</h1>
+      <h2 class="text-xl text-white">Que cherchez-vous ?</h2>
+
+      <!-- Catégories -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <div class="bg-neutral-900 rounded-xl p-6 flex flex-col items-center text-center hover:ring-2 ring-fuchsia-500 transition cursor-pointer">
+          <div class="text-4xl mb-2">👤</div>
+          <p>Compte</p>
+        </div>
+        <div class="bg-neutral-900 rounded-xl p-6 flex flex-col items-center text-center hover:ring-2 ring-fuchsia-500 transition cursor-pointer">
+          <div class="text-4xl mb-2">📁</div>
+          <p>Contenu</p>
+        </div>
+        <div class="bg-neutral-900 rounded-xl p-6 flex flex-col items-center text-center hover:ring-2 ring-fuchsia-500 transition cursor-pointer">
+          <div class="text-4xl mb-2">🚩</div>
+          <p>Signalements</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recherche rapide -->
+    <section>
+      <h2 class="text-2xl font-semibold mb-4">Recherche rapide</h2>
+      <div class="flex items-center bg-neutral-800 rounded-full px-4 py-2 w-full max-w-md">
+        <span class="text-xl mr-3">➕</span>
+        <input type="text" placeholder="Ajouter" class="w-full bg-transparent focus:outline-none text-white" />
+      </div>
+    </section>
+
+    <!-- Articles populaires -->
+    <section>
+      <h2 class="text-2xl font-semibold mb-6">Les plus consultés</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div class="bg-neutral-900 rounded-xl p-6 space-y-3">
+          <h3 class="text-lg font-bold">Lorem Ipsum ?</h3>
+          <p class="text-sm text-gray-300">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod...
+          </p>
+          <a href="#" class="text-sm text-fuchsia-500 hover:underline">Consulter</a>
+        </div>
+        <div class="bg-neutral-900 rounded-xl p-6 space-y-3">
+          <h3 class="text-lg font-bold">Lorem Ipsum ?</h3>
+          <p class="text-sm text-gray-300">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod...
+          </p>
+          <a href="#" class="text-sm text-fuchsia-500 hover:underline">Consulter</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dernier signalement -->
+    <section>
+      <h2 class="text-2xl font-semibold mb-6">Votre dernier signalement</h2>
+      <div class="bg-neutral-900 rounded-xl p-4 md:p-6 flex flex-col md:flex-row gap-6 items-start">
+        <img src="/102.png" alt="Signalement" class="w-40 h-28 object-cover rounded-lg" />
+        <div class="flex-1 space-y-2">
+          <h3 class="text-lg font-semibold">Problème Quiz</h3>
+          <p class="text-sm text-gray-400">par Ethan Fender</p>
+          <p class="text-sm text-gray-300">Statut : en cours d'examination</p>
+        </div>
+        <div class="text-sm space-y-1 text-right">
+          <p class="text-gray-400">Votre signalement :</p>
+          <p class="text-white font-semibold">Autre</p>
+          <a href="#" class="text-fuchsia-500 hover:underline">Consulter</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contacter le support -->
+    <section class="bg-neutral-900 rounded-2xl p-8 text-center space-y-4">
+      <h2 class="text-xl font-bold">Besoin de contacter le support ?</h2>
+      <p class="text-sm text-gray-300">
+        Dites-nous votre problème, et nous vous aiderons du mieux qu’on peut.
+      </p>
+      <a href="/contact" class="inline-block bg-fuchsia-600 hover:bg-fuchsia-700 px-6 py-2 rounded-full font-semibold transition">
+        Contacter
+      </a>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
