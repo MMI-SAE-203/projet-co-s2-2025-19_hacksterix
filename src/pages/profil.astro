@@ -1,41 +1,68 @@
 ---
-
-
-import PocketBase from '../../public/lib/pocketbase.mjs'; // <-- Chemin relatif correct
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Headersite.astro";
 import Footer from "../components/Footer.astro";
-import Carousel from "../components/Carousel.astro";
-
-
-
 ---
 
 <Layout>
   <Header />
-  
-  <section class="px-6 py-20 max-w-4xl mx-auto text-white flex flex-col md:flex-row items-center gap-6">
-    <!-- Photo de profil -->
-    <img
-      src="https://ui-avatars.com/api/?name={record.prenom}+{record.nom}&background=random"
-      alt="Avatar"
-      class="w-24 h-24 rounded-full border-4 border-white object-cover"
-    />
 
-    <!-- Infos utilisateur -->
-    <div class="space-y-2">
-      <div class="flex items-center gap-2">
-    
-        <button class="text-sm bg-white text-black rounded-full p-2 hover:bg-gray-200">
-          ✏️
-        </button>
+  <main class="px-6 pt-28 pb-20 max-w-5xl mx-auto text-white space-y-12">
+
+    <!-- 👤 Profil utilisateur -->
+    <section class="flex flex-col md:flex-row items-center gap-6">
+      <img src="/bobel.png" alt="Photo de profil" class="w-28 h-28 rounded-full object-cover border-4 border-white shadow-lg" />
+
+      <div class="text-center md:text-left space-y-2">
+        <h1 class="text-2xl md:text-3xl font-bold bg-white text-black px-4 py-1 rounded-full inline-block">Banjamin</h1>
+        <div class="flex items-center justify-center md:justify-start gap-2">
+          <span class="bg-white text-black text-sm px-3 py-1 rounded-full">Vicq, France</span>
+          
+          <div >
+          <a
+            href="/modification"
+            class="bg-white hover:bg-gray-200 text-black rounded-full p-1 transition"
+          >
+            modifier
+          </a>
+        </div>
+        </div>
       </div>
-      <div class="bg-white text-black inline-block px-4 py-1 rounded-full text-sm">
-        Vicq, France
+    </section>
+
+    <hr class="border-gray-700" />
+
+    <!-- 🏅 Badges & infos -->
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-12">
+      <!-- Badges -->
+      <div>
+        <h2 class="text-xl font-semibold mb-4">Badge obtenue</h2>
+        <div class="grid grid-cols-3 gap-4">
+          <img src="/Badge1.png" alt="Badge 1" class="w-14 mx-auto" />
+          <img src="/Badge2.png" alt="Badge 2" class="w-14 mx-auto" />
+          <img src="/Badge3.png" alt="Badge 3" class="w-14 mx-auto" />
+          <img src="/Badge1.png" alt="Badge 1" class="w-14 mx-auto" />
+          <img src="/Badge2.png" alt="Badge 2" class="w-14 mx-auto" />
+          <img src="/Badge3.png" alt="Badge 3" class="w-14 mx-auto" />
+        </div>
       </div>
-    </div>
-  </section>
-  
-  
+
+      <!-- Infos compte -->
+      <div class="space-y-4">
+        <p class="flex items-center gap-2"><span>📅</span> Membre depuis : <strong>mars 2025</strong></p>
+        <div>
+          <h3 class="text-lg font-medium mb-2">Réseaux sociaux</h3>
+          <div class="flex gap-4 text-2xl">
+            <a href="/Facebook"><i class="fab fa-facebook text-white hover:text-fuchsia-400"></i></a>
+            <a href="/Twitter"><i class="fab fa-twitter text-white hover:text-fuchsia-400"></i></a>
+            <a href="/instagram"><i class="fab fa-instagram text-white hover:text-fuchsia-400"></i></a>
+            <a href="/linkedin"><i class="fab fa-linkedin text-white hover:text-fuchsia-400"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
   <Footer />
 </Layout>
