@@ -7,18 +7,11 @@ import Footer from "../../components/Footer.astro";
 
 <Layout>
   <Header />
-
-  <script is:inline>
-  console.log("✅ Script Plug and Quiz injecté");
-  const script = document.createElement("script");
-  script.src = "https://backend.plug-and-quiz.com/api/embed/embed.js";
-  script.defer = true;
-  script.setAttribute("data-domainId", "55d9492fc-f10e-4556-9a99-4ad309909567");
-  script.setAttribute("data-position", "bottom-right");
-  document.body.appendChild(script);
-</script>
-
-
+<div>
+  <div class='op-interactive' id='68400fe16e38e71c08369576' data-title='Testez vos Connaissances en Cybersécurité' data-url='https://adrienchoulet1.outgrow.us/68400fe16e38e71c08369576?vHeight=1' data-width='100%'>
+  </div>
+    <script>var og_temp=document.createElement('script');og_temp.async=true;og_temp.defer=true;og_temp.src='//dyv6f9ner1ir9.cloudfront.net/assets/js/nloader.js',og_temp.onload=function(){initIframe('68400fe16e38e71c08369576')},document.querySelector('head').appendChild(og_temp)</script>
+</div>
 
   <Footer />
 </Layout>
