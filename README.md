@@ -7,6 +7,8 @@
 - [ ] URL de la landing page : https://hacksterix-adrien.netlify.app/
 - [ ] URL de l'application finale : https://hacksterix-adrien.netlify.app/site/
 - [ ] URL de connexion au back office : https://hacksterix.adrienchoulet.fr/_/#/collections?collection=pbc_3688165688&filter=&sort=-%40rowid
+- [ ] Email connection du site : anais.lambert@example.com
+- [ ] MDP connection du site : AnaPass789$
 - [ ] Identifiant de connexion au backoffice : adrienchoulet1@gmail.com
 - [ ] Mot de passe de connexion au backoffice : 909098Aa90.
 - [ ] URL de la maquette FIGMA : https://www.figma.com/design/dq8BXNsAikK9lMofdop1fl/Projet-S2?node-id=361-17&t=lCtxIoNjWkvt3hqc-1
